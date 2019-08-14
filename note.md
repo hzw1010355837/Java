@@ -36,18 +36,19 @@
 > ```
 >
 > * 1,不能直接new抽象类对象~~Animal cat = new Animal();~~  2,必须用一个子类来继承抽象类 3,子类必须**覆盖重写抽象父类中所有抽象方法**:即**覆盖重写(实现),子类去掉abstract关键字,补上方法体大括号**  4, 创建子类对象进行使用
+>
 > * python:JAVA由于不支持多继承,故创造了接口这个概念来解决这个问题.而Python本身是支持多继承的,故在Python中,没有接口这种类,只有这个概念而已,只不过Python中的接口实现,是通过多继承实现的.
 >
 > * *metaclass=ABCMeta,以及@abstractclassmethod 其作用是检查子类中的方法是否按父类的名称书写,否则将报错误来提醒程序员*
 >
 > * 接口:引用类型(**抽象方法**)   类的公共规范标准
 >
->   * ```java
->     public interface DemoInterface { // 定义接口
->     }
->     public class DemoClass { // 定义类
->     }
->     ```
+>   ```java
+>   public interface DemoInterface { // 定义接口
+>   }
+>   public class DemoClass { // 定义类
+>   }
+>   ```
 >   * 高版本JDK中,接口中可以包含以下:常量,默认方法,抽象方法,静态方法,私有方法
 >
 >     * `public default void three() {}`接口中创建默认方法: 解决接口升级  (解释:当有多个实现类已经实现接口类时,新建的实现类又想在接口内定义新方法时使用)
@@ -73,7 +74,7 @@
 >
 >   * 类似于:引用类型的强制类型转换 
 >
->   * ```java
+>     ```java
 >     Animal animal = new Cat(); // 本来是猫,向上转型成为动物
 >     Cat cat = (Cat) animal;  // 本来是猫,已经被当作动物了,还原成为成为本来的猫
 >     ```
@@ -93,18 +94,19 @@
 >     * static修饰成员变量(实例属性)-->类属性:**类对象** 所拥有的属性,它被 **该类的所有实例对象所共有**
 >
 >       * python:**类属性只能通过类对象修改，不能通过实例对象修改**
->
->         * ```python
->           class F:
->     	        b = None
->               @classmethod
->               def a(cls, num):
->                   cls.b = num # 只能通过类对象对象修改类属性
->          c = F()
->          c.b # None
->          c.a(2)
->          c.b # 2
->           ```
+>       
+>         ```python
+>         class F:
+>             b = None
+>             @classmethod
+>             def a(cls, num):
+>                 cls.b = num # 只能通过类对象对象修改类属性
+>         c = F()
+>         c.b # None
+>         c.a(2)
+>         c.b # 2
+>         ```
+>       
 >     * java:**类属性可以通过实例对象修改(ide不推荐)**
 >
 >     * static修饰成员方法(实例方法)-->类方法: 作用,**不用创建实例对象,直接使用类对象就能使用**
@@ -177,11 +179,12 @@
 >
 >     * 数组:1,引用数据类型 2,数组当中的多个数据,类型必须统一 3,数组长度在程序运行时不可改变
 >
->       * ```java
->        int array = new int[3]; // 动态创建:指定长度
->     int array = new int[] {10, 20, 30}; // 静态创建:指定内容
->     int array = {10, 20, 30} // 静态省略写法
->        ```
+> ```java
+> int array = new int[3]; // 动态创建:指定长度
+> int array = new int[] {10, 20, 30}; // 静态创建:指定内容
+> int array = {10, 20, 30} // 静态省略写法
+> ```
+>
 > * 空指针异常:`NullPointerException`:忘了new
 >
 > ```java
@@ -212,70 +215,70 @@
 >
 >      * example:一个数组
 >
->          * ```java
->       public static void main(String[] args) {
->            	int[] array = new int[3];
->            	array[0] = 10;
->            	array[1] = 20;
->           array[2] = 30;
->           System.out.printLn(array)
->        }
->        /*
->        栈:main(String[] args) 为main方法开辟一块内存空间
->        	int[] array:局部变量
->        堆:new出来的东西都在堆内存
->        new int[3]--->地址值:0x666
->        	10	[0]
->        	20	[1]
->        	30	[2]
->        方法区(存放方法):public static void main(String[] args)  从方法区看方法信息,然后将信息加载到栈内存
->        进栈(调用方法时):从方法区看方法信息,然后将信息加载到栈内存,为main方法开辟一块内存空间. 
->        main方法之后的方法叫压栈
->        new出来的数组在堆当中,名称(变量)在栈当中存储的是地址值
->        */
->         ```
+> ```java
+> public static void main(String[] args) {
+>  	int[] array = new int[3];
+>  	array[0] = 10;
+>  	array[1] = 20;
+>     array[2] = 30;
+>     System.out.printLn(array)
+> }
+> /*
+>   栈:main(String[] args) 为main方法开辟一块内存空间
+>   int[] array:局部变量
+>   堆:new出来的东西都在堆内存
+>   new int[3]--->地址值:0x666
+>   10	[0]
+>   20	[1]
+>   30	[2]
+>   方法区(存放方法):public static void main(String[] args)  从方法区看方法信息,然后将信息加载到栈内存
+>   进栈(调用方法时):从方法区看方法信息,然后将信息加载到栈内存,为main方法开辟一块内存空间. 
+>   main方法之后的方法叫压栈
+>   new出来的数组在堆当中,名称(变量)在栈当中存储的是地址值
+> */
+> ```
 
 > * API:
 >
 >   * Scanner:键盘输入类
->
->     * ```java
->    Scanner sc = new Scanner(System.in);
->     int num = sc.nextInt(); // 从键盘接收的字符串转换成int
->     String str = sc.next(); // 默认接收全都是字符串
->      ```
+>   
+>   ```java
+>   Scanner sc = new Scanner(System.in);
+>   int num = sc.nextInt(); // 从键盘接收的字符串转换成int
+>   String str = sc.next(); // 默认接收全都是字符串
+>   ```
+>   
 >   * Random:产生随机数字类
+>   
+>   ```java
+>   Random r= new Random();
+>   int num = r.nextInt(); // 获取随机数int,范围int所有范围,有正负
+>   Random r= new Random(10); //0~9随机数
+>   ```
+>  
+>     * `ArrayList<E>`:ArrayList集合的长度是可以随意改变的
+>       * <E>代表泛型:也就是装在集合当中的所有元素,全都是同一类型 **泛型只能时引用类型**
 >
->     * ```java
->       Random r= new Random();
->     int num = r.nextInt(); // 获取随机数int,范围int所有范围,有正负
->     Random r= new Random(10); //0~9随机数
->       ```
->
->   * `ArrayList<E>`:ArrayList集合的长度是可以随意改变的
->
->     * <E>代表泛型:也就是装在集合当中的所有元素,全都是同一类型 **泛型只能时引用类型**
->
->     * ```java
->       ArrayList<String> list = new ArrayList<>(); // 创建集合list
->       list.add("字符串1"); // 添加元素,有返回值(boolean)代表添加成功或者失败
->       list.get(0); // 返回0索引元素
->       list.remove(0); // 返回被删除元素
->       list.size(); // 得到list长度
+>    ```java
+>    ArrayList<String> list = new ArrayList<>(); // 创建集合list
+>    list.add("字符串1"); // 添加元素,有返回值(boolean)代表添加成功或者失败
+>    list.get(0); // 返回0索引元素
+>    list.remove(0); // 返回被删除元素
+>    list.size(); // 得到list长度
 >     /* 需要存储基本类型时,必须使用基本类型对应的"包装类"
-> 	     	byte 		Byte
-> 	     	int			Interger **
-> 	     	short		Short
-> 	     	long 		Long
-> 	     	float 		Float
-> 	     	double		Double
-> 	     	char		Character **
-> 	     	boolean		Boolean
+>    	     	byte 		Byte
+>    	     	int			Interger **
+>    	     	short		Short
+>    	     	long 		Long
+>    	     	float 		Float
+>    	     	double		Double
+>    	     	char		Character **
+>    	     	boolean		Boolean
 >     */
 >       ArrayList<Interger> arrayA = new ArrayList<>();
 >       arrayA.add(100);
 >       arrayA.get(100);
->       ```
+>    ```
 > * 对于ArrayList来说,直接打印得到的不是地址值,而是内容,内容空则为[]
 >
 > * 需要存储基本类型时,必须使用基本类型对应的"包装类" 
@@ -287,23 +290,23 @@
 >
 >     * 字符串效果上相当于时char[]字符数组,但是底层原理时byte[]字节数组 
 >
->     * ```java
->       String str = new String("abc"); // abc
->       char[] charArray = {'A', 'B', 'C'};
->       String str1 = new String(charArray); // ABC
->       byte[] byteArray = {97, 98, 99};
->       String str2 = new String(byteArray); // abc
->       String str3 = "abc"; // 在字符串常量池中
->       ```
+>    ```java
+>    String str = new String("abc"); // abc
+>    char[] charArray = {'A', 'B', 'C'};
+>    String str1 = new String(charArray); // ABC
+>    byte[] byteArray = {97, 98, 99};
+>    String str2 = new String(byteArray); // abc
+>    String str3 = "abc"; // 在字符串常量池中
+>    ```
 >
 >    * StringBuilder(字符串**缓冲区~~提高效率~~**)类原理
 >
 >       * 正常进行字符串相加时,内存中就会有多个字符串,占用空间过多
 >
->          * ```java
->           String s = "a" + "b" + "c"; 
->           // 产生了5个字符串 "a", "b", "c", "ab", "abc"
->           ```
+>       ```java
+>      String s = "a" + "b" + "c"; 
+>      // 产生了5个字符串 "a", "b", "c", "ab", "abc"
+>      ```
 >
 >   * 使用StringBuilder**始终是一个数组,占用空间少,效率高**,底层也是一个数组,但是没有被final修饰,可以改变长度
 >
@@ -336,11 +339,11 @@
 >
 >     * 提供大量静态方法,实现数组常见操作
 >
->     * ```java
->       int[] array = {10, 20, 30};
->     String str = Arrays.toString(array); // [10, 20, 30]
->     Arrays.sort(array);
->       ```
+>    ```java
+>    int[] array = {10, 20, 30};
+>    String str = Arrays.toString(array); // [10, 20, 30]
+>    Arrays.sort(array);
+>    ```
 
 |              | public | protected | (default)不写 | private |
 | ------------ | ------ | --------- | ------------- | ------- |
@@ -351,22 +354,24 @@
 
 > * 内部类概念
 >
->   * ```java
->     public class Animal {
->       public class Heart {  // 成员内部类
->           // ...
->       }
->       // ...
->       public void method () {
->           class Inner {  // 局部内部类
->               int num = 10;
->               void methodInner() {
->                   System.out.println(num);
->               }
->           }
->       }
+>   ```java
+>   public class Animal {
+>     public class Heart {  // 成员内部类
+>         // ...
 >     }
->     ```
+>     // ...
+>     public void method () {
+>         class Inner {  // 局部内部类
+>             int num = 10;
+>             void methodInner() {
+>                 System.out.println(num);
+>             }
+>         }
+>     }
+>   }
+>   ```
+>
+>   
 >
 >   * 访问内部类
 >
@@ -379,8 +384,8 @@
 >
 >       * 局部内部类只能在当前局部内使用
 >
->       * ```java
->       public class Outer {
+>         ```java
+>          public class Outer {
 >           public void method () {
 >               class Inner {  // 局部内部类权限修饰符什么都不能写
 >                   public void methodInner() {
@@ -391,7 +396,7 @@
 >               in.methodInner();  // 只能在局部使用
 >           }
 >         }
->        ```
+>         ```
 >
 >   * 注意事项:权限修饰符(**public > protected > (default) > private**)
 >
